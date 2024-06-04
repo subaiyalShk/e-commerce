@@ -8,9 +8,12 @@
   "dependencies": {
     "apollo-server-micro": "^3.13.0",
     "graphql": "^16.8.1",
+    "graphql-scalars": "^1.23.0",
     "next": "latest",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "reflect-metadata": "^0.2.2",
+    "type-graphql": "^2.0.0-rc.1"
   },
   "engines": {
     "node": ">=18"
