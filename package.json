@@ -6,11 +6,17 @@
     "start": "next start"
   },
   "dependencies": {
+    "apollo-server-micro": "^3.13.0",
+    "graphql": "^16.8.1",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.3",
+    "typescript": "5.4.5"
   }
 }
