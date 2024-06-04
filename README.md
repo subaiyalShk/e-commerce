@@ -2,7 +2,7 @@
 
 The E-commerce Product Reviews App is a web application that allows users to review and rate products in an e-commerce store. It provides a platform for customers to share their experiences and opinions about the products they have purchased.
 
-![Screenshot](assets/Screenshot 2024-06-04 at 3.25.10 PM.png)
+![wireframe](./assets/wireframe.png)
 
 ## Features
 
@@ -28,5 +28,5 @@ Once the application is up and running, you can access it in your web browser at
 If you would like to contribute to the development of the E-commerce Product Reviews App, please follow the guidelines in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
 
 ## License
-
+env.test.local
 This project is licensed under the [MIT License](./LICENSE).
