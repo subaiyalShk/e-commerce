@@ -53,9 +53,9 @@ To install and run the E-commerce Product Reviews App, follow these steps:
 2. Install the dependencies: `npm install`
 3. Run the application: `npm run dev`
 
-## Contributing
-
-If you would like to contribute to the development of the E-commerce Product Reviews App, please follow the guidelines in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
+## Next Steps:
+Write Unit Tests to fetch all products, getProductById and addReviews to a product.
+Implement Authentication using github.
 
 ## License
 env.test.local

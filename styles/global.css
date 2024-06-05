@@ -1,6 +1,8 @@
 #product-list{
   list-style-type: none;
   width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #product-list li{
@@ -8,9 +10,10 @@
   border-radius: 15px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), /* Light shadow */
               0 6px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow */
-  padding: 20px; /* Space inside the card */
+  padding: 0px; /* Space inside the card */
   margin: 20px; /* Space outside the card */
   transition: transform 0.2s;
+  width: 240px; /* Width of the card */
 }
 
 #product-list li:hover{

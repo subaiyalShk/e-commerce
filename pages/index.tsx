@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css';
 import {dehydrate, useQuery} from "react-query"
 import {queryClient, getProducts} from "../src/api";
 import ProductCard from '../components/ProductCard';
+import { Container } from '@mantine/core';
 
 export async function getServerSideProps() {
     await queryClient.prefetchQuery('products', ()=>getProducts())
@@ -12,7 +13,7 @@ export async function getServerSideProps() {
 const Home: React.FC = () => {
   const {data} = useQuery(["products"], () => getProducts());
   return (
-    <div className={styles.container}>
+    <Container size="md">
       <Head>
         <title>E-Commerce</title>
         <link rel="icon" href="/favicon.ico" />
@@ -34,7 +35,7 @@ const Home: React.FC = () => {
       <footer>
         
       </footer>
-    </div>
+    </Container>
     )
 };
 
