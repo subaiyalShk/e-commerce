@@ -28,6 +28,12 @@ To install and run the E-commerce Product Reviews App, follow these steps:
 
 Once the application is up and running, you can access it in your web browser at `http://localhost:3000`. From there, you can explore the product listings, read and submit reviews, and interact with other users.
 
+## Creating a new query:
+1. create resolver in products.resolver.js
+2. create new graphQl file under graphQl folder and create a query
+3. In the terminal execute '''npm run generate'''
+4. Find the api.ts file make sure to import your new method from GraphQlClient
+
 ## Contributing
 
 If you would like to contribute to the development of the E-commerce Product Reviews App, please follow the guidelines in the [CONTRIBUTING.md](./CONTRIBUTING.md) file.

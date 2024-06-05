@@ -30,7 +30,13 @@ export type Product = {
 
 export type Query = {
   __typename?: 'Query';
+  product?: Maybe<Product>;
   products: Array<Product>;
+};
+
+
+export type QueryProductArgs = {
+  id: Scalars['String']['input'];
 };
 
 export type Review = {
@@ -44,12 +50,38 @@ export type Review = {
   userId: Scalars['String']['output'];
 };
 
+export type ProductByIdQueryVariables = Exact<{
+  id: Scalars['String']['input'];
+}>;
+
+
+export type ProductByIdQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, name: string, description: string, price: number, reviews: Array<{ __typename?: 'Review', id: string, text: string, rating: number, userId: string, productId: string, createdAt: number, updatedAt: number }> } | null };
+
 export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, name: string, description: string, price: number }> };
 
 
+export const ProductByIdDocument = gql`
+    query productByID($id: String!) {
+  product(id: $id) {
+    id
+    name
+    description
+    price
+    reviews {
+      id
+      text
+      rating
+      userId
+      productId
+      createdAt
+      updatedAt
+    }
+  }
+}
+    `;
 export const GetProductsDocument = gql`
     query getProducts {
   products {
@@ -68,6 +100,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    productByID(variables: ProductByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ProductByIdQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ProductByIdQuery>(ProductByIdDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'productByID', 'query', variables);
+    },
     getProducts(variables?: GetProductsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<GetProductsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetProductsQuery>(GetProductsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getProducts', 'query', variables);
     }
