@@ -1,0 +1,17 @@
+query productByID($id: String!) {
+    product(id: $id) {
+        id,
+        name,
+        description,
+        price,
+        reviews {
+            id,
+            text,
+            rating,
+            userId,
+            productId,
+            createdAt,
+            updatedAt,
+        }
+    }
+}

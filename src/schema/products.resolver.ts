@@ -5,34 +5,20 @@ import Products from './products.json';
 
 @Resolver(Product)
 export class ProductResolver {
-  @Query(() => [Product])
-  products(): Product[] {
-    // Fetch products from the database
-    return Products;
-  }
+    @Query(() => [Product])
+    products(): Product[] {
+        // Fetch products from the database
+        return Products;
+    }
 
-//   @Query(() => Product, { nullable: true })
-//   async product(@Arg('id') id: string): Promise<Product | null> {
-//     // Fetch a product by ID from the database
-//   }
+    @Query(() => Product, {nullable: true})
+    product(@Arg("id", ()=>String) id: String): Product | undefined {
+        const product = Products.find((product) => product.id === id)
+        if (product === undefined) {
+            throw new Error("product not found")
+        }
+        return product
+    
+    }
 
-//   @Mutation(() => Product)
-//   async createProduct(
-//     @Arg('name') name: string,
-//     @Arg('description') description: string,
-//     @Arg('price') price: number,
-//     @Ctx() ctx: Context
-//   ): Promise<Product> {
-//     // Create a new product in the database
-//   }
-
-//   @Mutation(() => Review)
-//   async createReview(
-//     @Arg('productId') productId: string,
-//     @Arg('text') text: string,
-//     @Arg('rating') rating: number,
-//     @Ctx() ctx: Context
-//   ): Promise<Review> {
-//     // Create a new review for a product in the database
-//   }
 }

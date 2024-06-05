@@ -2,6 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import {dehydrate, useQuery} from "react-query"
 import {queryClient, getProducts} from "../src/api";
+import ProductCard from '../components/ProductCard';
 
 export async function getServerSideProps() {
     await queryClient.prefetchQuery('products', ()=>getProducts())
@@ -13,19 +14,17 @@ const Home: React.FC = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>E-Commerce</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <div>
           <h1>Products</h1>
-          <ul>
+          <ul id='product-list'>
             {data?.products.map((product) => (
               <li key={product.id}>
-                <h2>{product.name}</h2>
-                <p>{product.description}</p>
-                <p>{product.price}</p>
+                <ProductCard product={product}/>
               </li>
             ))}
           </ul>
