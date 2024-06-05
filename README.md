@@ -39,13 +39,14 @@ Review {
 
 src/api.ts:
 
+```
 export const {
     getProducts, <- get all products
     productByID, <- get a product by ID (product1, product2)
     addReview <- add a review to a product (productId,text,rating,userName)
 } = getSdk(gqlClient)
 
-Once the application is up and running, you can access it in your web browser at `http://localhost:3000`. From there, you can explore the product listings, read and submit reviews, and interact with other users.
+```
 
 ## Creating a new query:
 1. create resolver in products.resolver.js
@@ -53,7 +54,7 @@ Once the application is up and running, you can access it in your web browser at
 3. In the terminal execute '''npm run generate'''
 4. Find the api.ts file make sure to import your new method from GraphQlClient
 
-## Installation
+## Installation and runnning the app
 
 To install and run the E-commerce Product Reviews App, follow these steps:
 
@@ -61,10 +62,13 @@ To install and run the E-commerce Product Reviews App, follow these steps:
 2. Install the dependencies: `npm install`
 3. Run the application: `npm run dev`
 
+Once the application is up and running, you can access it in your web browser at `http://localhost:3000`. From there, you can explore the product listings, read and submit reviews, and interact with other users.
+
 ## Next Steps:
-Write Unit Tests to fetch all products, getProductById and addReviews to a product.
-Implement Authentication using github, follow these docs -> https://next-auth.js.org/configuration/initialization
-follow the wireframe for the authentication flow. page should not be protected or blocked for non- authenticated users orelse it would defeat the purpose of having a SSR application. instead a login button should be placed instead of add review button on the product details page. 
+1. Write Unit Tests to fetch all products, getProductById and addReviews to a product.
+Implement 
+
+2. Authentication using github, follow these docs -> https://next-auth.js.org/configuration/initialization follow the wireframe for the authentication flow. page should not be protected or blocked for non- authenticated users orelse it would defeat the purpose of having a SSR application. instead a login button should be placed instead of add review button on the product details page. 
 
 ## License
 env.test.local
