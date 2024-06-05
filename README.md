@@ -19,7 +19,7 @@ due to lack of clarity on what the UX should look like I have created a wirefram
 
 ## DB Schema -> src/schema/products.ts
 in the below schema using name and id both seems redundant. I have only added ID due to best practices.
-
+```
 product {
     "id": String, 
     "name": String,
@@ -34,7 +34,7 @@ Review {
     "rating": Integer,
     "userName": String
 }
-
+```
 ## Query Operations that currently exist in GraphQLClient
 
 src/api.ts:
