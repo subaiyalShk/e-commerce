@@ -1,0 +1,49 @@
+[
+    {
+      "id": "product1",
+      "name": "Product1",
+      "description": "This is the first product",
+      "price": 19.99,
+      "reviews": [
+        {
+          "id": "review1",
+          "text": "Great product!",
+          "rating": 5,
+          "userId": "user1",
+          "productId": "product1",
+          "createdAt": 123,
+          "updatedAt": 123
+        },
+        {
+          "id": "review2",
+          "text": "Could be better",
+          "rating": 3,
+          "userId": "user2",
+          "productId": "product1",
+          "createdAt": 123,
+          "updatedAt": 123
+        }
+      ],
+      "createdAt": 123,
+      "updatedAt": 123
+    },
+    {
+      "id": "product2",
+      "name": "Product 2",
+      "description": "This is the second product",
+      "price": 29.99,
+      "reviews": [
+        {
+          "id": "review3",
+          "text": "Awesome!",
+          "rating": 4,
+          "userId": "user3",
+          "productId": "product2",
+          "createdAt": 123,
+          "updatedAt": 123
+        }
+      ],
+      "createdAt": 123,
+      "updatedAt": 123
+    }
+  ]

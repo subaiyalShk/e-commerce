@@ -4,11 +4,15 @@ The E-commerce Product Reviews App is a web application that allows users to rev
 
 ![wireframe](./assets/wireframe.png)
 
-## Features
+## Functional Requirements
 
 - User registration and authentication
 - View Product listings
 - Product review submission and rating
+
+## Non-functional Requirements
+- React query - caching
+- GraphQLRequest - formatting
 
 ## Installation
 
