@@ -55,7 +55,8 @@ To install and run the E-commerce Product Reviews App, follow these steps:
 
 ## Next Steps:
 Write Unit Tests to fetch all products, getProductById and addReviews to a product.
-Implement Authentication using github.
+Implement Authentication using github, follow these docs -> https://next-auth.js.org/configuration/initialization
+follow the wireframe for the authentication flow. page should not be protected or blocked for non- authenticated users orelse it would defeat the purpose of having a SSR application. instead a login button should be placed instead of add review button on the product details page. 
 
 ## License
 env.test.local

@@ -58,8 +58,8 @@ const ProductDetails: React.FunctionComponent<{
                 height={200}
                 alt="Ethereum"
             />
-            <p>Description: {product.description}</p>
-            <p>Price: ${product.price}</p>
+            <Text size="md">Description: {product.description}</Text>
+            <Text size="md">Price: ${product.price}</Text>
             <h3>Reviews:</h3>
             <ScrollArea h={160}>
                 <List spacing={20}>
