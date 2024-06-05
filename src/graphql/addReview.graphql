@@ -1,0 +1,14 @@
+mutation addReview($productId: String!, $text: String!, $rating: Float!, $userName: String!) {
+    addReview(productId: $productId, text: $text, rating: $rating, userName: $userName) {
+        id
+        name
+        description
+        price
+        reviews {
+            id
+            text
+            rating
+            userName
+        }
+    }
+}

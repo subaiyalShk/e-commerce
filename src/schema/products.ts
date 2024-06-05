@@ -12,16 +12,8 @@ export class Review {
   rating: number;
 
   @Field(() => String)
-  userId: string;
+  userName: string;
 
-  @Field(() => String)
-  productId: string;
-
-  @Field(() => Int)
-  createdAt: number;
-
-  @Field(() => Int)
-  updatedAt: number;
 }
 
 @ObjectType()
@@ -41,9 +33,4 @@ export class Product {
   @Field(() => [Review])
   reviews: Review[];
 
-  @Field(() => Int)
-  createdAt: number;
-
-  @Field(() => Int)
-  updatedAt: number;
 }

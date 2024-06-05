@@ -8,10 +8,7 @@ query productByID($id: String!) {
             id,
             text,
             rating,
-            userId,
-            productId,
-            createdAt,
-            updatedAt,
+            userName,
         }
     }
 }

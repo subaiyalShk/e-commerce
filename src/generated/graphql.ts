@@ -17,15 +17,26 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type Mutation = {
+  __typename?: 'Mutation';
+  addReview: Product;
+};
+
+
+export type MutationAddReviewArgs = {
+  productId: Scalars['String']['input'];
+  rating: Scalars['Float']['input'];
+  text: Scalars['String']['input'];
+  userName: Scalars['String']['input'];
+};
+
 export type Product = {
   __typename?: 'Product';
-  createdAt: Scalars['Int']['output'];
   description: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
   price: Scalars['Float']['output'];
   reviews: Array<Review>;
-  updatedAt: Scalars['Int']['output'];
 };
 
 export type Query = {
@@ -41,21 +52,28 @@ export type QueryProductArgs = {
 
 export type Review = {
   __typename?: 'Review';
-  createdAt: Scalars['Int']['output'];
   id: Scalars['ID']['output'];
-  productId: Scalars['String']['output'];
   rating: Scalars['Int']['output'];
   text: Scalars['String']['output'];
-  updatedAt: Scalars['Int']['output'];
-  userId: Scalars['String']['output'];
+  userName: Scalars['String']['output'];
 };
+
+export type AddReviewMutationVariables = Exact<{
+  productId: Scalars['String']['input'];
+  text: Scalars['String']['input'];
+  rating: Scalars['Float']['input'];
+  userName: Scalars['String']['input'];
+}>;
+
+
+export type AddReviewMutation = { __typename?: 'Mutation', addReview: { __typename?: 'Product', id: string, name: string, description: string, price: number, reviews: Array<{ __typename?: 'Review', id: string, text: string, rating: number, userName: string }> } };
 
 export type ProductByIdQueryVariables = Exact<{
   id: Scalars['String']['input'];
 }>;
 
 
-export type ProductByIdQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, name: string, description: string, price: number, reviews: Array<{ __typename?: 'Review', id: string, text: string, rating: number, userId: string, productId: string, createdAt: number, updatedAt: number }> } | null };
+export type ProductByIdQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, name: string, description: string, price: number, reviews: Array<{ __typename?: 'Review', id: string, text: string, rating: number, userName: string }> } | null };
 
 export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -63,6 +81,27 @@ export type GetProductsQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, name: string, description: string, price: number }> };
 
 
+export const AddReviewDocument = gql`
+    mutation addReview($productId: String!, $text: String!, $rating: Float!, $userName: String!) {
+  addReview(
+    productId: $productId
+    text: $text
+    rating: $rating
+    userName: $userName
+  ) {
+    id
+    name
+    description
+    price
+    reviews {
+      id
+      text
+      rating
+      userName
+    }
+  }
+}
+    `;
 export const ProductByIdDocument = gql`
     query productByID($id: String!) {
   product(id: $id) {
@@ -74,10 +113,7 @@ export const ProductByIdDocument = gql`
       id
       text
       rating
-      userId
-      productId
-      createdAt
-      updatedAt
+      userName
     }
   }
 }
@@ -100,6 +136,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    addReview(variables: AddReviewMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<AddReviewMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AddReviewMutation>(AddReviewDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'addReview', 'mutation', variables);
+    },
     productByID(variables: ProductByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ProductByIdQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ProductByIdQuery>(ProductByIdDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'productByID', 'query', variables);
     },

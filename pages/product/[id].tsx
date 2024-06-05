@@ -1,6 +1,8 @@
 import { queryClient, productByID } from "../../src/api";
-import {dehydrate, useQuery } from "react-query";
+import { dehydrate, useQuery } from "react-query";
+import { addReview } from "../../src/api";
 import { useState } from 'react';
+import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 
 export async function getServerSideProps({params}) {
     await queryClient.prefetchQuery('product', ()=>
@@ -17,16 +19,40 @@ export async function getServerSideProps({params}) {
 const ProductDetails: React.FunctionComponent<{
     id: string;
 }> = ({id}) => {
-    const { data } = useQuery("product", ()=>productByID({id:id}))
+    const {data} = useQuery("product", ()=>productByID({id:id}))
+    const [product,setProduct] = useState(data?.product)
     const [reviewText, setReviewText] = useState('');
     const [reviewRating, setReviewRating] = useState(0);
+
+    const handleAddReview = async (event) => {
+        event.preventDefault();
+
+        try {
+          const response = await addReview({
+            productId:id,
+            text:reviewText,
+            rating:reviewRating,
+            userName:'testUser',
+          });
+    
+          setProduct(response.addReview); // Log the response to the console
+        } catch (error) {
+          console.error(error); // Log any errors to the console
+        }
+    };
+
     return(
         <div>
-            <h1>{data?.product.name}</h1>
-            <p>{data?.product.description}</p>
-            <p>{data?.product.price}</p>
+            <h1>{product.name}</h1>
+            <Image
+                src="https://images.unsplash.com/photo-1622632169740-85c306c57aa2?q=80&w=2873&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                height={200}
+                alt="Ethereum"
+            />
+            <p>{product.description}</p>
+            <p>{product.price}</p>
             <div>
-                {data?.product.reviews.map((review) => (
+                {product.reviews.map((review) => (
                     <div key={review.id}>
                         <p>{review.text}</p>
                         <p>{review.rating}</p>
@@ -48,6 +74,7 @@ const ProductDetails: React.FunctionComponent<{
                         <option key={value} value={value}>{value}</option>
                     ))}
                 </select>
+                <button onClick={handleAddReview}>Add Review</button>
             </div>
         </div>
     )
