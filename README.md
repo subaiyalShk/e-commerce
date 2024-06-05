@@ -14,6 +14,7 @@ The E-commerce Product Reviews App is a web application that allows users to rev
 - React query - caching
 - GraphQLRequest - formatting
 
+
 ## Installation
 
 To install and run the E-commerce Product Reviews App, follow these steps:
