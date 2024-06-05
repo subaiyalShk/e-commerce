@@ -35,7 +35,15 @@ Review {
     "userName": String
 }
 
-## Query Operations
+## Query Operations that currently exist in GraphQLClient
+
+src/api.ts:
+
+export const {
+    getProducts, <- get all products
+    productByID, <- get a product by ID (product1, product2)
+    addReview <- add a review to a product (productId,text,rating,userName)
+} = getSdk(gqlClient)
 
 Once the application is up and running, you can access it in your web browser at `http://localhost:3000`. From there, you can explore the product listings, read and submit reviews, and interact with other users.
 
